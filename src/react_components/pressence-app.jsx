@@ -1,9 +1,10 @@
 'use strict';
 
-import React from 'react';
-import UserList from './userlist.jsx';
-
 import fetch from 'isomorphic-fetch';
+import React from 'react';
+import {Router, Route, Link} from 'react-router';
+
+import PressenceList from './pressence-list.jsx';
 
 class PressenceApp extends React.Component {
   constructor(props) {
@@ -13,13 +14,13 @@ class PressenceApp extends React.Component {
     };
   }
   componentDidMount() {
-    var self = this;
+    let self = this;
     setTimeout(()=> {
       self.poll();
     }, 7000);
   }
   poll() {
-    var self = this;
+    let self = this;
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -27,24 +28,24 @@ class PressenceApp extends React.Component {
       method: 'get',
       headers: headers
     })
-      .then(
-        (response) => {
-          response.json().then((data) => {
-            this.setState({users: data});
-            setTimeout(()=>{
-              self.poll();
-            }, 7000);
-          });
-        }
-      ).catch((err) => {
-        console.log('Fetch error', err);
-      });
+    .then(
+      (response) => {
+        response.json().then((data) => {
+          this.setState({users: data});
+          setTimeout(()=>{
+            self.poll();
+          }, 7000);
+        });
+      }
+    ).catch((err) => {
+      console.log('Fetch error', err);
+    });
   }
   render() {
     return (
       <div>
         <h1>Users:</h1>
-        <UserList users={this.state.users}/>
+        <PressenceList users={this.state.users} />
       </div>
     );
   }

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-let Styles = {
+const Styles = {
   online: {
     color: 'green'
   },
@@ -21,4 +21,4 @@ class PressenceStatus extends React.Component {
   }
 };
 
-module.exports = PressenceStatus;
+export default PressenceStatus;
