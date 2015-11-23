@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {render} from 'react-dom';
+import {Router} from 'react-router';
 /*import {Router, Route, Link} from 'react-router';
 import PressenceApp from './pressence-app.jsx';
 import {UserInfo} from './user.jsx';
@@ -25,4 +26,4 @@ const routes = (
   </Router>
 );
 */
-render(routes, document.getElementById('AppMount'));
+render(<Router children={routes} />, document.getElementById('react-view'));

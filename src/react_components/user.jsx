@@ -12,11 +12,15 @@ const Styles = {
 
 class UserList extends React.Component {
   render() {
-    let userlist = this.props.users.map((user, index) => {
-      return (
-        <li key={user.id} ><a href={`/user/${user.id}`}>{user.username}</a> <PressenceStatus status={user.online}/></li>
-      );
-    })
+    console.log('UserList', this.props.users);
+    let userlist = [];
+    if (this.props.users) {
+      userlist = this.props.users.map((user, index) => {
+        return (
+          <li key={user.id} ><a href={`/user/${user.id}`}>{user.username}</a> <PressenceStatus status={user.online}/></li>
+        );
+      })
+    }
     return (
       <ul style={Styles.userlist}>
         {userlist}
@@ -26,19 +30,13 @@ class UserList extends React.Component {
 };
 
 class UserInfo extends React.Component {
-  componentDidMount() {
-    const userid = this.props.params.id;
-    console.log('UserID', userid);
-    // retrieve user profile
-  };
-
   render() {
     return (
       <div>
-        <b>I am a user!</b>
+        <b>I am a user {this.props.params.id}!</b>
       </div>
     );
-  };
+  }
 };
 
 export default UserList;
