@@ -45,6 +45,6 @@
     ]
   },
   "watch": {
-    "browserify": "src/react_components/**/*.jsx"
+    "browserify": "src/react_components/**/*.jsx, public/js/worker.js, public/js/pressencePoller.js"
   }
 }

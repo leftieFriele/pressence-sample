@@ -60,16 +60,17 @@ server.register([Inert, Vision], function() {
       </head>
       <body>
         <div id="react-view">${componentHtml}</div>
+         <script src="js/pressencePoller.js" type="javascript/worker"></script>
          <script src="js/pressence.js"></script>
       </body>
       </html>`;
       return reply(html);
     })
   });
-  
+
   server.route({
     method: 'GET',
-    path: '/{p*}',
+    path: '/{js*}',
     handler: {
       directory: {
         path: './public',
